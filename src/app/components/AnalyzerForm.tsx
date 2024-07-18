@@ -40,6 +40,11 @@ export default function AnalyzerForm() {
     }
   };
 
+  const seo = results?.seoData;
+  const crux = results?.cruxData;
+  const suggestions = results?.suggestions;
+
+  console.log(seo, crux, suggestions);
   return (
     <div>
       <form onSubmit={handleSubmit} className="mb-8">

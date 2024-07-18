@@ -2,23 +2,39 @@ import { NextResponse } from "next/server";
 import { analyzeSEO } from "@/app/lib/seoAnalyzer";
 import { analyzeCrux } from "@/app/lib/cruxAnalyzer";
 import { generateSuggestions } from "@/app/lib/aiSuggestions";
+import { isValidUrl, sanitizeInput } from "@/app/lib/utils";
+import { checkRateLimit } from "@/app/lib/rateLimiter";
 
 export async function POST(request: Request) {
-  const { url } = await request.json();
+  const ip = request.headers.get("x-forwarded-for") || "unknown";
 
-  if (!url) {
-    return NextResponse.json({ error: "URL is required" }, { status: 400 });
+  if (!checkRateLimit(ip)) {
+    return NextResponse.json({ error: "Rate limit exceeded" }, { status: 429 });
   }
 
   try {
-    const seoData = await analyzeSEO(url);
-    const cruxData = await analyzeCrux(url);
+    const { url } = await request.json();
+
+    if (!url || !isValidUrl(url)) {
+      return NextResponse.json(
+        { error: "Invalid URL provided" },
+        { status: 400 }
+      );
+    }
+
+    const sanitizedUrl = sanitizeInput(url);
+
+    const seoData = await analyzeSEO(sanitizedUrl);
+    const cruxData = await analyzeCrux(sanitizedUrl);
 
     const suggestions = await generateSuggestions(seoData!, cruxData!);
 
     return NextResponse.json({ seoData, cruxData, suggestions });
   } catch (error) {
     console.error("Error during analysis:", error);
-    return NextResponse.json({ error: "Analysis failed" }, { status: 500 });
+    return NextResponse.json(
+      { error: "An unexpected error occurred" },
+      { status: 500 }
+    );
   }
 }
