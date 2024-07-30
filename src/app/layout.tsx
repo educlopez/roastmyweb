@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
+import localFont from "next/font/local"
 import { VercelToolbar } from "@vercel/toolbar/next"
 import { ThemeProvider } from "next-themes"
 
@@ -7,10 +8,12 @@ import { Analytics } from "@/app/components/Analytics"
 
 import "./globals.css"
 
-import { FloatNav } from "@/app/components/floatNav"
+import { FloatNav } from "@/app/components/FloatNav"
 
 const inter = Inter({ subsets: ["latin"] })
-
+const pramukhRounded = localFont({
+  src: "./fonts/PramukhRounded-Variable.woff",
+})
 export const metadata: Metadata = {
   metadataBase: new URL("http://localhost:3000"),
   title: {
@@ -63,13 +66,15 @@ export default function RootLayout({
 }>) {
   const shouldInjectToolbar = process.env.NODE_ENV === "development"
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body
-        className={`bg-light1 dark:bg-dark1 antialiased transition ${inter.className}`}
+        className={`bg-light1 antialiased transition dark:bg-dark1 ${inter.className} `}
       >
         <ThemeProvider attribute="class">
           <FloatNav />
-          {children}
+          <main>
+            <div className="overflow-hidden">{children}</div>
+          </main>
           <Analytics />
         </ThemeProvider>
         {shouldInjectToolbar && <VercelToolbar />}

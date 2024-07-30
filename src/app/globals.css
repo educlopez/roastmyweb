@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/**
+* This is a variable font
+* You can control variable axes as shown below:
+* font-variation-settings: wght 900.0;
+*
+* available axes:
+'wght' (range from 200.0 to 900.0
+*/
+@font-face {
+  font-family: "PramukhRounded-Variable";
+  src:
+    url("./fonts/PramukhRounded-Variable.woff2") format("woff2"),
+    url("./fonts/PramukhRounded-Variable.woff") format("woff"),
+    url("./fonts/PramukhRounded-Variable.ttf") format("truetype");
+  font-weight: 200 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+.title-font {
+  font-family: "PramukhRounded-Variable";
+  font-variation-settings: "wght" 700;
+  transition: all 1.5s;
+  text-transform: uppercase;
+}
+.title-font:hover {
+  font-variation-settings: "wght" 500;
+}
+

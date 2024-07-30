@@ -11,9 +11,13 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
   return (
     <div>
       <h2 className="mb-2 text-2xl font-bold">Results</h2>
-      <SEOAnalysis data={results.seoData} />
-      <CoreWebVitals data={results.cruxData} />
-      <AISuggestions suggestions={results.suggestions} />
+      <div className="flex flex-row gap-4">
+        <div className="flex flex-col gap-4">
+          <SEOAnalysis data={results.seoData} />
+          <CoreWebVitals data={results.cruxData} />
+        </div>
+        <AISuggestions suggestions={results.suggestions} />
+      </div>
     </div>
   )
 }
