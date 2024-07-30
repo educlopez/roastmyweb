@@ -8,15 +8,31 @@ interface ResultsDisplayProps {
 }
 
 export default function ResultsDisplay({ results }: ResultsDisplayProps) {
+  const { seoData, cruxData, suggestions } = results
+
+  // Ensure suggestions is an array of strings
+  const suggestionsArray = Array.isArray(suggestions) ? suggestions : []
   return (
     <div>
       <h2 className="mb-2 text-2xl font-bold">Results</h2>
       <div className="flex flex-row gap-4">
         <div className="flex flex-col gap-4">
-          <SEOAnalysis data={results.seoData} />
-          <CoreWebVitals data={results.cruxData} />
+          {seoData ? (
+            <SEOAnalysis data={seoData} />
+          ) : (
+            <div>No SEO data available</div>
+          )}
+          {cruxData ? (
+            <CoreWebVitals data={cruxData} />
+          ) : (
+            <div>No Core Web Vitals data available</div>
+          )}
         </div>
-        <AISuggestions suggestions={results.suggestions} />
+        {suggestionsArray.length > 0 ? (
+          <AISuggestions suggestions={suggestionsArray} />
+        ) : (
+          <div>No suggestions available</div>
+        )}
       </div>
     </div>
   )
