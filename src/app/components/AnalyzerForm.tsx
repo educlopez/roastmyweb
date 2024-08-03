@@ -51,22 +51,29 @@ export default function AnalyzerForm() {
   return (
     <div>
       {!currentUrl && (
-        <form onSubmit={handleSubmit} className="mb-8 flex flex-row gap-0">
-          <input
-            type="url"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-            placeholder="Enter website URL"
-            className="w-full rounded border p-2"
-            required
-          />
-          <button
-            type="submit"
-            className="mt-2 rounded bg-blue-500 px-4 py-2 text-white"
-            disabled={isLoading}
-          >
-            {isLoading ? "Analyzing..." : "Analyze"}
-          </button>
+        <form
+          onSubmit={handleSubmit}
+          className="mx-auto mt-8 flex max-w-[500px] flex-col gap-3"
+        >
+          <fieldset className="relative flex w-full gap-2">
+            <input
+              type="url"
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+              placeholder="Enter website URL"
+              className="h-[36px] w-full flex-1 rounded-lg bg-light3 px-2 font-sans text-sm outline-none outline-transparent transition-colors ease-out focus:outline-none focus:ring-1 focus:ring-[#cacaca] active:bg-light2 dark:bg-dark3 dark:shadow-none dark:focus:ring-white/10"
+              required
+            />
+            <button
+              type="submit"
+              className="shadow-button absolute right-1 top-1 flex h-[28px] w-20 items-center justify-center overflow-hidden rounded-[6px] bg-[#FF2574] py-1 font-medium text-light1 transition-colors duration-200 hover:bg-[#F0246D] disabled:cursor-not-allowed disabled:opacity-50 dark:bg-[#00C492] hover:dark:bg-[#00B385]"
+              disabled={isLoading}
+            >
+              <span className="text-shadow-sm text-[13px]">
+                {isLoading ? "Analyzing..." : "Analyze"}
+              </span>
+            </button>
+          </fieldset>
         </form>
       )}
       {isLoading && (

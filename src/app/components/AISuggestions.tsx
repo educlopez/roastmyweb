@@ -5,7 +5,7 @@ interface AISuggestionsProps {
 export default function AISuggestions({ suggestions }: AISuggestionsProps) {
   return (
     <div>
-      <h3 className="text-xl font-semibold">AI Suggestions</h3>
+
       <div className="flex flex-col gap-4">
         {suggestions.map((suggestion, index) => (
           <div

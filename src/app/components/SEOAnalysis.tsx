@@ -5,10 +5,8 @@ interface SEOAnalysisProps {
 }
 
 export default function SEOAnalysis({ data }: SEOAnalysisProps) {
-  console.log(data)
   return (
     <div className="mb-4">
-      <h3 className="text-xl font-semibold">SEO Analysis</h3>
       {/* Create cards or charts using the SEO data */}
       <div className="grid grid-cols-3 gap-4">
         <div className="rounded-lg bg-light2 p-4 shadow dark:bg-dark2">

@@ -24,10 +24,26 @@
 .title-font {
   font-family: "PramukhRounded-Variable";
   font-variation-settings: "wght" 700;
-  transition: all 1.5s;
+  transition: font-variation-settings 1.5s;
   text-transform: uppercase;
 }
 .title-font:hover {
   font-variation-settings: "wght" 500;
 }
 
+.gradient-mask-b-0 {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, transparent 100%);
+}
+.gradient-mask-t-0 {
+  -webkit-mask-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 1) 0%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, transparent 100%);
+}
