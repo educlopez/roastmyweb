@@ -46,6 +46,6 @@ export async function generateSuggestions(
   const suggestions = object.text.map(
     (suggestion) => `${suggestion.name}: ${suggestion.message}`
   )
-  console.log(suggestions)
+  // console.log(suggestions)
   return suggestions
 }

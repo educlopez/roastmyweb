@@ -15,7 +15,7 @@ export default function Home() {
               </span>
               <br />
               <div className="title-font relative mx-auto w-max [filter:drop-shadow(0px_1px_3px_rgba(27,_37,_80,_0.14))]">
-                <div className="relative text-[#FF2574] dark:text-[#00DDA6]">
+                <div className="relative text-[#FF2574] dark:text-[#FF6B00]">
                   <span className="">{subtitle}</span>
                 </div>
               </div>

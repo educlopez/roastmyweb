@@ -23,16 +23,20 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
             aria-label="Manage your seo"
           >
             <Tabs.Trigger
-              className="text-mauve11 hover:text-violet11 flex h-[45px] flex-1 cursor-default select-none items-center justify-center bg-light3 px-5 text-[15px] leading-none outline-none first:rounded-tl-md last:rounded-tr-md data-[state=active]:text-[#FF2574] data-[state=active]:focus:relative dark:bg-dark3 data-[state=active]:dark:text-[#00DDA6]"
+              className="hover:text-violet11 group flex h-[45px] flex-1 cursor-pointer select-none items-center justify-center bg-light3 px-5 text-[15px] leading-none outline-none first:rounded-tl-md last:rounded-tr-md data-[state=active]:cursor-not-allowed data-[state=active]:text-[#FF2574] data-[state=active]:focus:relative dark:bg-dark3 data-[state=active]:dark:text-[#FF6B00]"
               value="seo"
             >
-              Seo and Crux analysis
+              <span className="rounded-md px-4 py-2 group-data-[state=active]:bg-[#FF2574]/5 group-data-[state=active]:dark:bg-[#FF6B00]/5 group-data-[state=active]:dark:text-[#FF6B00]">
+                Seo and Crux analysis
+              </span>
             </Tabs.Trigger>
             <Tabs.Trigger
-              className="text-mauve11 hover:text-violet11 flex h-[45px] flex-1 cursor-default select-none items-center justify-center bg-light3 px-5 text-[15px] leading-none outline-none first:rounded-tl-md last:rounded-tr-md data-[state=active]:text-[#FF2574] data-[state=active]:focus:relative dark:bg-dark3 data-[state=active]:dark:text-[#00DDA6]"
+              className="hover:text-violet11 group flex h-[45px] flex-1 cursor-pointer select-none items-center justify-center bg-light3 px-5 text-[15px] leading-none outline-none first:rounded-tl-md last:rounded-tr-md data-[state=active]:cursor-not-allowed data-[state=active]:text-[#FF2574] data-[state=active]:focus:relative dark:bg-dark3 data-[state=active]:dark:text-[#FF6B00]"
               value="ai"
             >
-              Roasts of the wise
+              <span className="rounded-md px-4 py-2 group-data-[state=active]:bg-[#FF2574]/5 group-data-[state=active]:dark:bg-[#FF6B00]/5 group-data-[state=active]:dark:text-[#FF6B00]">
+                Roasts of the wise
+              </span>
             </Tabs.Trigger>
           </Tabs.List>
           <Tabs.Content

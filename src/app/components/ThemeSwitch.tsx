@@ -34,7 +34,7 @@ export const ThemeSwitch = () => {
       />
       <Moon
         size={16}
-        className="dark:fill-dark12 hidden transition dark:block"
+        className="hidden transition dark:block dark:fill-dark12"
       />
     </div>
   )

@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useRouter, useSearchParams } from "next/navigation"
 import { motion } from "framer-motion"
 
 import useUrlStore from "@/app/components/AppContext"
@@ -11,30 +12,42 @@ const FALSE_LOADING_TIME = 3000
 
 export default function AnalyzerForm() {
   const [url, setUrl] = useState("")
-  const [results, setResults] = useState<AnalysisResult | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [showResults, setShowResults] = useState(false)
   const currentUrl = useUrlStore((state) => state.currentUrl)
   const updateStoreUrl = useUrlStore((state) => state.updateUrl)
+  const results = useUrlStore((state) => state.results)
+  const setResults = useUrlStore((state) => state.setResults)
+  const clearState = useUrlStore((state) => state.clearState)
+  const router = useRouter()
+  const searchParams = useSearchParams()
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+  useEffect(() => {
+    const urlParam = searchParams.get("url")
+    if (urlParam) {
+      setUrl(urlParam)
+      handleAnalysis(urlParam)
+    } else {
+      clearState()
+    }
+  }, [searchParams])
 
+  const handleAnalysis = async (urlToAnalyze: string) => {
     setIsLoading(true)
     setShowResults(false)
     try {
       const response = await fetch("/api/analyze", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url }),
+        body: JSON.stringify({ url: urlToAnalyze }),
       })
 
       if (!response.ok) throw new Error("Analysis failed")
 
       const data = await response.json()
       setResults(data)
-      updateStoreUrl(url)
-      window.history.pushState({}, "", `?url=${url}`)
+      updateStoreUrl(urlToAnalyze)
+      router.push(`?url=${urlToAnalyze}`, undefined)
       // Introduce artificial delay
       setTimeout(() => {
         setIsLoading(false)
@@ -46,6 +59,11 @@ export default function AnalyzerForm() {
     } finally {
       setIsLoading(false)
     }
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    handleAnalysis(url)
   }
 
   return (
@@ -66,7 +84,7 @@ export default function AnalyzerForm() {
             />
             <button
               type="submit"
-              className="shadow-button absolute right-1 top-1 flex h-[28px] w-20 items-center justify-center overflow-hidden rounded-[6px] bg-[#FF2574] py-1 font-medium text-light1 transition-colors duration-200 hover:bg-[#F0246D] disabled:cursor-not-allowed disabled:opacity-50 dark:bg-[#00C492] hover:dark:bg-[#00B385]"
+              className="shadow-button absolute right-1 top-1 flex h-[28px] w-20 items-center justify-center overflow-hidden rounded-[6px] bg-[#FF2574] py-1 font-medium text-light1 transition-colors duration-200 hover:bg-[#F0246D] disabled:cursor-not-allowed disabled:opacity-50 dark:bg-[#FF6B00] hover:dark:bg-[#FF5C00]"
               disabled={isLoading}
             >
               <span className="text-shadow-sm text-[13px]">
