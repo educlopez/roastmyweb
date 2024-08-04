@@ -5,7 +5,7 @@ interface CoreWebVitalsProps {
 }
 
 export default function CoreWebVitals({ data }: CoreWebVitalsProps) {
-  console.log(data)
+  // console.log(data)
   return (
     <div className="mb-4">
       <h3 className="text-xl font-semibold">Core Web Vitals</h3>

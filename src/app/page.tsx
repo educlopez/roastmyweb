@@ -1,4 +1,4 @@
-import AnalyzerForm from "@/app/components/AnalyzerForm"
+import WrappedAnalyzerForm from "@/app/components/AnalyzerForm"
 
 const title = "AI’s Wise, "
 const subtitle = "Web Data Surprise"
@@ -28,7 +28,7 @@ export default function Home() {
         </div>
       </section>
       <section className="mx-auto w-full max-w-6xl px-4 lg:px-8">
-        <AnalyzerForm />
+        <WrappedAnalyzerForm />
       </section>
     </div>
   )

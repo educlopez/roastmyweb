@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { Suspense, useEffect, useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { motion } from "framer-motion"
 
@@ -10,7 +10,7 @@ import { AnalysisResult } from "@/app/types"
 
 const FALSE_LOADING_TIME = 3000
 
-export default function AnalyzerForm() {
+export function AnalyzerForm() {
   const [url, setUrl] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [showResults, setShowResults] = useState(false)
@@ -110,5 +110,13 @@ export default function AnalyzerForm() {
       )}
       {showResults && results && <ResultsDisplay results={results} />}
     </div>
+  )
+}
+
+export default function WrappedAnalyzerForm() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <AnalyzerForm />
+    </Suspense>
   )
 }
