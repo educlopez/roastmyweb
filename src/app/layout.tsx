@@ -89,7 +89,9 @@ export default function RootLayout({
               <div className="gradient-mask-t-0 absolute inset-0 backdrop-blur-[12px]" />
             </div>
             <main>
-              <div className="overflow-hidden">{children}</div>
+              <div className="mx-auto w-[90%] overflow-hidden md:w-full">
+                {children}
+              </div>
             </main>
             <NavPill />
             <FloatNav />

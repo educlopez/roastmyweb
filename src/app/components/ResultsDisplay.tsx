@@ -23,7 +23,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
             aria-label="Manage your seo"
           >
             <Tabs.Trigger
-              className="hover:text-violet11 group flex h-[45px] flex-1 cursor-pointer select-none items-center justify-center bg-light3 px-5 text-[15px] leading-none outline-none first:rounded-tl-md last:rounded-tr-md data-[state=active]:cursor-not-allowed data-[state=active]:text-[#FF2574] data-[state=active]:focus:relative dark:bg-dark3 data-[state=active]:dark:text-[#FF6B00]"
+              className="group flex h-[45px] flex-1 cursor-pointer select-none items-center justify-center bg-light3 px-0 text-[15px] leading-none outline-none first:rounded-tl-md last:rounded-tr-md data-[state=active]:cursor-not-allowed data-[state=active]:text-[#FF2574] data-[state=active]:focus:relative dark:bg-dark3 data-[state=active]:dark:text-[#FF6B00] md:px-5"
               value="seo"
             >
               <span className="rounded-md px-4 py-2 group-data-[state=active]:bg-[#FF2574]/5 group-data-[state=active]:dark:bg-[#FF6B00]/5 group-data-[state=active]:dark:text-[#FF6B00]">
@@ -31,7 +31,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
               </span>
             </Tabs.Trigger>
             <Tabs.Trigger
-              className="hover:text-violet11 group flex h-[45px] flex-1 cursor-pointer select-none items-center justify-center bg-light3 px-5 text-[15px] leading-none outline-none first:rounded-tl-md last:rounded-tr-md data-[state=active]:cursor-not-allowed data-[state=active]:text-[#FF2574] data-[state=active]:focus:relative dark:bg-dark3 data-[state=active]:dark:text-[#FF6B00]"
+              className="group flex h-[45px] flex-1 cursor-pointer select-none items-center justify-center bg-light3 px-0 text-[15px] leading-none outline-none first:rounded-tl-md last:rounded-tr-md data-[state=active]:cursor-not-allowed data-[state=active]:text-[#FF2574] data-[state=active]:focus:relative dark:bg-dark3 data-[state=active]:dark:text-[#FF6B00] md:px-5"
               value="ai"
             >
               <span className="rounded-md px-4 py-2 group-data-[state=active]:bg-[#FF2574]/5 group-data-[state=active]:dark:bg-[#FF6B00]/5 group-data-[state=active]:dark:text-[#FF6B00]">

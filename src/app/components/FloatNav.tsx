@@ -1,6 +1,7 @@
 "use client"
 
 import { useRouter } from "next/navigation"
+import { AnimatePresence, motion } from "framer-motion"
 import { Trash2 } from "lucide-react"
 
 import useUrlStore from "@/app/components/AppContext"
@@ -23,17 +24,22 @@ export function FloatNav() {
 
   return (
     <nav className="fixed bottom-5 left-1/2 z-50 flex -translate-x-1/2 flex-row items-center justify-center gap-2 rounded-full border border-light11/20 bg-light1/70 px-4 py-2 text-light12 bg-blend-luminosity shadow-sm backdrop-blur-xl transition dark:border-dark11/20 dark:bg-dark1/50 dark:text-dark12">
-      {currentUrl && (
-        <>
-          <span
-            className="flex cursor-pointer flex-row items-center justify-center gap-2 rounded-md bg-[#FF2574]/5 px-2 py-1 font-mono text-[13px] text-[#FF2574] dark:bg-[#FF6B00]/5 dark:text-[#FF6B00]"
-            onClick={handleClick}
-          >
-            <Trash2 size={16} />
-            {formattedUrl}
-          </span>
-        </>
-      )}
+      <AnimatePresence>
+        {currentUrl && (
+          <>
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="flex cursor-pointer flex-row items-center justify-center gap-2 rounded-md bg-[#FF2574]/5 px-2 py-1 font-mono text-[13px] text-[#FF2574] dark:bg-[#FF6B00]/5 dark:text-[#FF6B00]"
+              onClick={handleClick}
+            >
+              <Trash2 size={16} />
+              {formattedUrl}
+            </motion.span>
+          </>
+        )}
+      </AnimatePresence>
       <a
         href="https://x.com/educlopez93"
         aria-label="X Profile educlopez93"
