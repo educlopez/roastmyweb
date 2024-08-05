@@ -10,18 +10,15 @@ export interface SEOData {
   h2Count?: number
   robots?: string
   googlebot?: string
-
-  // Add more properties as needed
 }
 
 export async function analyzeSEO(url: string): Promise<SEOData | undefined> {
   try {
     const response = await axios.get(url)
-    // console.log(response.data)
+
     const dom = new JSDOM(response.data)
-    // console.log(dom)
+
     const document = dom.window.document
-    // console.log(document)
 
     const title = document.querySelector("title")?.textContent || undefined
     const metaDescription =

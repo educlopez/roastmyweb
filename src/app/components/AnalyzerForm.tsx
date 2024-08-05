@@ -9,9 +9,8 @@ import ResultsDisplay from "@/app/components/ResultsDisplay"
 
 import ScannerWindowAnimation from "./Scaner"
 
-// Definimos una interfaz para las props del componente
 interface AnalyzerFormProps {
-  minLoadingTime?: number // Tiempo mínimo de carga en milisegundos
+  minLoadingTime?: number
 }
 
 export function AnalyzerForm({ minLoadingTime = 3000 }: AnalyzerFormProps) {
@@ -55,14 +54,12 @@ export function AnalyzerForm({ minLoadingTime = 3000 }: AnalyzerFormProps) {
       updateStoreUrl(urlToAnalyze)
       router.push(`?url=${urlToAnalyze}`, undefined)
 
-      // Calculamos el tiempo transcurrido y esperamos si es necesario
       const elapsedTime = Date.now() - startTime
       const remainingTime = Math.max(0, minLoadingTime - elapsedTime)
 
       await new Promise((resolve) => setTimeout(resolve, remainingTime))
     } catch (error) {
       console.error("Error:", error)
-      // Handle error (e.g., show error message to user)
     } finally {
       setIsLoading(false)
       setShowResults(true)

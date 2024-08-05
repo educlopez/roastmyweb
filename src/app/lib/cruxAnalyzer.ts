@@ -9,6 +9,7 @@ export interface CruxMetrics {
     histogram: { start: number; end: number; density: number }[]
     percentiles: { p75: number | null }
   } | null
+  //DEPRECATE
   // first_input_delay: {
   //   histogram: { start: number; end: number; density: number }[]
   //   percentiles: { p75: number | null }

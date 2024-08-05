@@ -5,12 +5,11 @@ interface CoreWebVitalsProps {
 }
 
 export default function CoreWebVitals({ data }: CoreWebVitalsProps) {
-  // console.log(data)
   return (
     <div className="mb-4">
       <h3 className="text-xl font-semibold">Core Web Vitals</h3>
       <h4 className="my-2 text-lg font-semibold">Mobile</h4>
-      {/* Create cards or charts for mobile data */}
+
       <div className="grid grid-cols-3 gap-4">
         <div className="rounded-lg bg-light2 p-4 shadow dark:bg-dark2">
           <h4 className="text-lg font-semibold">LCP</h4>
@@ -46,7 +45,7 @@ export default function CoreWebVitals({ data }: CoreWebVitalsProps) {
         </div>
       </div>
       <h4 className="my-2 text-lg font-semibold">Desktop</h4>
-      {/* Create cards or charts for desktop data */}
+
       <div className="grid grid-cols-3 gap-4">
         <div className="rounded-lg bg-light2 p-4 shadow dark:bg-dark2">
           <h4 className="text-lg font-semibold">LCP</h4>
@@ -81,10 +80,9 @@ export default function CoreWebVitals({ data }: CoreWebVitalsProps) {
           )}
         </div>
       </div>
-
-      <div className="mt-4">
+      {/* <div className="mt-4">
         <h4 className="my-2 text-lg font-semibold">Navigation Types</h4>
-        {/* Create charts or tables for navigation types */}
+
         <div className="grid grid-cols-2 gap-4">
           <div className="rounded-lg bg-light2 p-4 shadow dark:bg-dark2">
             <h4 className="text-lg font-semibold">Mobile</h4>
@@ -103,7 +101,7 @@ export default function CoreWebVitals({ data }: CoreWebVitalsProps) {
             )}
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

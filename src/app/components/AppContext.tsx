@@ -3,14 +3,12 @@ import { create } from "zustand"
 // Define the state structure with types
 interface UrlState {
   currentUrl: string | null
-  results: any | null // Replace 'any' with the actual type of your results
+  results: any | null
 }
-
-// Define the actions available within the store
 interface UrlActions {
   updateUrl: (url: string) => void
   clearState: () => void
-  setResults: (results: any) => void // Replace 'any' with the actual type of your results
+  setResults: (results: any) => void
 }
 
 export const useUrlStore = create<UrlState & UrlActions>((set) => ({
@@ -31,7 +29,6 @@ export const useUrlStore = create<UrlState & UrlActions>((set) => ({
   },
 
   setResults: (results: any) => {
-    // Replace 'any' with the actual type of your results
     set((state) => ({
       results: results,
     }))

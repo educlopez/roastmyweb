@@ -7,7 +7,6 @@ interface SEOAnalysisProps {
 export default function SEOAnalysis({ data }: SEOAnalysisProps) {
   return (
     <div className="mb-4">
-      {/* Create cards or charts using the SEO data */}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
         <div className="rounded-lg bg-light2 p-4 shadow dark:bg-dark2">
           <h4 className="text-lg font-semibold">Title</h4>

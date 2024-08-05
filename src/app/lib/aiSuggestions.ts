@@ -42,10 +42,9 @@ export async function generateSuggestions(
       ),
     }),
   })
-  // Map the suggestions to an array of strings
+
   const suggestions = object.text.map(
     (suggestion) => `${suggestion.name}: ${suggestion.message}`
   )
-  // console.log(suggestions)
   return suggestions
 }
