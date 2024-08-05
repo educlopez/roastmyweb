@@ -6,11 +6,15 @@ import { motion } from "framer-motion"
 
 import useUrlStore from "@/app/components/AppContext"
 import ResultsDisplay from "@/app/components/ResultsDisplay"
-import { AnalysisResult } from "@/app/types"
 
-const FALSE_LOADING_TIME = 3000
+import ScannerWindowAnimation from "./Scaner"
 
-export function AnalyzerForm() {
+// Definimos una interfaz para las props del componente
+interface AnalyzerFormProps {
+  minLoadingTime?: number // Tiempo mínimo de carga en milisegundos
+}
+
+export function AnalyzerForm({ minLoadingTime = 3000 }: AnalyzerFormProps) {
   const [url, setUrl] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [showResults, setShowResults] = useState(false)
@@ -35,6 +39,8 @@ export function AnalyzerForm() {
   const handleAnalysis = async (urlToAnalyze: string) => {
     setIsLoading(true)
     setShowResults(false)
+    const startTime = Date.now()
+
     try {
       const response = await fetch("/api/analyze", {
         method: "POST",
@@ -48,16 +54,18 @@ export function AnalyzerForm() {
       setResults(data)
       updateStoreUrl(urlToAnalyze)
       router.push(`?url=${urlToAnalyze}`, undefined)
-      // Introduce artificial delay
-      setTimeout(() => {
-        setIsLoading(false)
-        setShowResults(true)
-      }, FALSE_LOADING_TIME)
+
+      // Calculamos el tiempo transcurrido y esperamos si es necesario
+      const elapsedTime = Date.now() - startTime
+      const remainingTime = Math.max(0, minLoadingTime - elapsedTime)
+
+      await new Promise((resolve) => setTimeout(resolve, remainingTime))
     } catch (error) {
       console.error("Error:", error)
       // Handle error (e.g., show error message to user)
     } finally {
       setIsLoading(false)
+      setShowResults(true)
     }
   }
 
@@ -94,29 +102,18 @@ export function AnalyzerForm() {
           </fieldset>
         </form>
       )}
-      {isLoading && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="flex items-center justify-center"
-        >
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-            className="h-12 w-12 rounded-full border-t-4 border-solid border-blue-500"
-          />
-        </motion.div>
-      )}
+      {isLoading && <ScannerWindowAnimation />}
       {showResults && results && <ResultsDisplay results={results} />}
     </div>
   )
 }
 
-export default function WrappedAnalyzerForm() {
+export default function WrappedAnalyzerForm({
+  minLoadingTime,
+}: AnalyzerFormProps) {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <AnalyzerForm />
+    <Suspense fallback={<ScannerWindowAnimation />}>
+      <AnalyzerForm minLoadingTime={minLoadingTime} />
     </Suspense>
   )
 }
