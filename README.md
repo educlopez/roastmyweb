@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# RoastMyWeb: Because Your Website Needs a Reality Check
 
-## Getting Started
+Welcome to RoastMyWeb, the app that's here to lovingly tear your website apart and put it back together... maybe. We're like that brutally honest friend you never knew you needed, but for your web presence.
 
-First, run the development server:
+## What's This Madness?
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+RoastMyWeb is a Next.js application that analyzes websites and provides a sarcastic, ironic, and somewhat humorous roast of things you could improve regarding SEO and Google's Core Web Vitals. Because let's face it, your website probably needs it.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Prerequisites
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Before you embark on this journey of self-discovery (and potential self-loathing), make sure you have:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Node.js (preferably a version that doesn't make your computer cry)
+- A sense of humor (critical for reading the roasts)
+- Thick skin (also critical for reading the roasts)
 
-## Learn More
+## Installation
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone this repository (if you dare):
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```
+   git clone https://github.com/your-username/roastmyweb.git
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+2. Navigate to the project directory:
 
-## Deploy on Vercel
+   ```
+   cd roastmyweb
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Install dependencies (grab a coffee, this might take a while):
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+   ```
+   npm install
+   ```
+
+4. Create a `.env` file in the root directory and add your API keys:
+   ```
+   GOOGLE_API_KEY=your_google_api_key_here
+   GROQ_API_KEY=your_groq_api_key_here
+   ```
+   (Don't worry, we won't judge you for your API key choices... much.)
+
+## Usage
+
+1. Start the development server:
+
+   ```
+   npm run dev
+   ```
+
+2. Open your browser and navigate to `http://localhost:3000`
+
+3. Enter a URL, sit back, and prepare for a roasting that would make Gordon Ramsay proud.
+
+## Features
+
+- SEO analysis (because meta tags are still a thing, apparently)
+- Core Web Vitals check (we'll tell you if your site is as slow as a sloth on sedatives)
+- Sarcastic commentary (our AI has a PhD in Sass)
+- Responsive design (unlike your website, probably)
+
+## Technologies
+
+This project uses a plethora of dependencies because why use one when you can use twenty? Here are some highlights:
+
+- Next.js (for that sweet, sweet server-side rendering)
+- React (because who doesn't love a good component hierarchy?)
+- Tailwind CSS (for when you're too lazy to write your own CSS)
+- Framer Motion (to add some pizzazz to your pain)
+- Zod (because TypeScript wasn't strict enough)
+- SWR (for fetching data and caching your shame)
+
+## Contributing
+
+Found a bug? Want to add more sass to our roasts? Feel free to contribute! Just remember, we roast code contributions as mercilessly as we roast websites.
+
+---
+
+Now go forth and roast some websites! Remember, a good roast is like a good website: it should be quick, impactful, and leave people wanting more... unlike most of the sites you'll be analyzing.
