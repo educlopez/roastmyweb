@@ -70,6 +70,7 @@ This project uses a plethora of dependencies because why use one when you can us
 - Framer Motion (to add some pizzazz to your pain)
 - Zod (because TypeScript wasn't strict enough)
 - SWR (for fetching data and caching your shame)
+- Vercel AI SDK - The AI Toolkit for TypeScript and JavaScript
 
 ## Contributing
 
