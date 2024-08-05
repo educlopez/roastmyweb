@@ -18,18 +18,20 @@ const pramukhRounded = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL("https://roastmyweb.vercel.app/"),
   title: {
-    default: "RoastWeb",
-    template: "%s | RoastWeb",
+    default: "RoasMytWeb",
+    template: "%s | RoastMyWeb",
   },
-  description: "Roast a website with the power of Lighthouse",
+  description:
+    "Roast a website with the power of crux api, sdk.vercel.ai and SEO",
   keywords: [
-    "lighthouse, web vitals, seo, performance, accessibility, best practices, pwa",
+    "crux, ai, vercel, sdk,, web vitals, seo, performance, accessibility, best practices, pwa",
   ],
   openGraph: {
-    title: "RoastWeb",
-    description: "Roast a website with the power of Lighthouse",
+    title: "RoastMyWeb",
+    description:
+      "Roast a website with the power of crux api, sdk.vercel.ai and SEO",
     url: "https://roastmyweb.vercel.app/",
-    siteName: "RoastWeb",
+    siteName: "RoastMyWeb",
     images: [
       {
         url: "https://roastmyweb.vercel.app/og.jpg",
@@ -52,7 +54,7 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: "RoastWeb",
+    title: "RoastMyWeb",
     card: "summary_large_image",
   },
   icons: {
