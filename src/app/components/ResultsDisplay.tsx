@@ -15,7 +15,7 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
   const suggestionsArray = Array.isArray(suggestions) ? suggestions : []
   return (
     <div>
-      <h2 className="mb-2 text-2xl font-bold">Results</h2>
+      <h2 className="my-4 text-center text-2xl font-bold md:my-8">Results</h2>
       <div className="flex flex-row gap-4">
         <Tabs.Root className="flex w-full flex-col" defaultValue="seo">
           <Tabs.List

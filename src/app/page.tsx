@@ -1,5 +1,7 @@
 import WrappedAnalyzerForm from "@/app/components/AnalyzerForm"
 
+import ScannerWindowAnimation from "./components/Scaner"
+
 const title = "AI’s Wise, "
 const subtitle = "Web Data Surprise"
 
