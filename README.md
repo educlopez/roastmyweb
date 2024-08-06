@@ -19,7 +19,7 @@ Before you embark on this journey of self-discovery (and potential self-loathing
 1. Clone this repository (if you dare):
 
    ```
-   git clone https://github.com/your-username/roastmyweb.git
+   git clone https://github.com/educlopez/roastmyweb.git
    ```
 
 2. Navigate to the project directory:
