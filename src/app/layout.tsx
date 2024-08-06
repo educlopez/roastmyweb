@@ -11,6 +11,8 @@ import "./globals.css"
 import { FloatNav } from "@/app/components/FloatNav"
 import { NavPill } from "@/app/components/NavPill"
 
+import Footer from "./components/Footer"
+
 const inter = Inter({ subsets: ["latin"] })
 const pramukhRounded = localFont({
   src: "./fonts/PramukhRounded-Variable.woff",
@@ -75,7 +77,7 @@ export default function RootLayout({
         className={`bg-light1 antialiased transition dark:bg-dark1 ${inter.className} `}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="relative mb-16 sm:mb-32">
+          <div className="relative mb-16">
             <div className="fixed inset-x-0 top-0 isolate z-[10] h-[50px]">
               <div className="gradient-mask-b-0 absolute inset-0 backdrop-blur-[1px]" />
               <div className="gradient-mask-b-0 absolute inset-0 backdrop-blur-[2px]" />
@@ -97,6 +99,7 @@ export default function RootLayout({
             </main>
             <NavPill />
             <FloatNav />
+            <Footer />
           </div>
           <Analytics />
         </ThemeProvider>

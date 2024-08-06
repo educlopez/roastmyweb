@@ -1,6 +1,6 @@
 import WrappedAnalyzerForm from "@/app/components/AnalyzerForm"
 
-import ScannerWindowAnimation from "./components/Scaner"
+import ImageDemon from "./components/ImageDemon"
 
 const title = "AI’s Wise, "
 const subtitle = "Web Data Surprise"
@@ -29,9 +29,13 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       <section className="mx-auto w-full max-w-6xl px-4 lg:px-8">
         <WrappedAnalyzerForm />
       </section>
+      <div className="relative w-full md:block">
+        <ImageDemon />
+      </div>
     </div>
   )
 }
