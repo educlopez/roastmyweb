@@ -41,8 +41,8 @@ export function FloatNav() {
         )}
       </AnimatePresence>
       <a
-        href="https://x.com/educlopez93"
-        aria-label="X Profile educlopez93"
+        href="https://x.com/educalvolpz"
+        aria-label="X Profile educalvolpz"
         target="_blank"
         className="flex h-auto w-auto cursor-pointer items-center justify-center gap-4 p-1"
       >

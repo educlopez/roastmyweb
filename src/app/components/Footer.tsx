@@ -10,7 +10,7 @@ export default function Footer() {
                   Github
                 </div>
               </a>
-              <a href="https://twitter.com/educlopez93" target="_blank">
+              <a href="https://x.com/educalvolpz" target="_blank">
                 <div className="w-24 py-1 transition hover:text-light11 hover:dark:text-dark11">
                   Twitter
                 </div>
