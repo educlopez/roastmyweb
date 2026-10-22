@@ -7,18 +7,15 @@ export function isValidUrl(url: string): boolean {
   }
 }
 
-export function sanitizeInput(input: any): any {
+export function sanitizeInput<T>(input: T): T {
   if (typeof input === "string") {
-    // Remove any potentially harmful characters or patterns
-    return input.replace(/[<>&'"]/g, "")
+    return input.replace(/[<>&'"]/g, "") as T
   } else if (Array.isArray(input)) {
-    return input.map(sanitizeInput)
+    return input.map((item) => sanitizeInput(item)) as T
   } else if (typeof input === "object" && input !== null) {
-    const sanitizedObject: { [key: string]: any } = {}
-    for (const [key, value] of Object.entries(input)) {
-      sanitizedObject[key] = sanitizeInput(value)
-    }
-    return sanitizedObject
+    return Object.fromEntries(
+      Object.entries(input).map(([key, value]) => [key, sanitizeInput(value)])
+    ) as T
   }
   return input
 }

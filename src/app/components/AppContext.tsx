@@ -1,14 +1,15 @@
 import { create } from "zustand"
 
-// Define the state structure with types
+import { AnalysisResult } from "@/app/types"
+
 interface UrlState {
   currentUrl: string | null
-  results: any | null
+  results: AnalysisResult | null
 }
 interface UrlActions {
   updateUrl: (url: string) => void
   clearState: () => void
-  setResults: (results: any) => void
+  setResults: (results: AnalysisResult) => void
 }
 
 export const useUrlStore = create<UrlState & UrlActions>((set) => ({
@@ -16,7 +17,7 @@ export const useUrlStore = create<UrlState & UrlActions>((set) => ({
   results: null,
 
   updateUrl: (url: string) => {
-    set((state) => ({
+    set(() => ({
       currentUrl: url,
     }))
   },
@@ -28,8 +29,8 @@ export const useUrlStore = create<UrlState & UrlActions>((set) => ({
     }))
   },
 
-  setResults: (results: any) => {
-    set((state) => ({
+  setResults: (results: AnalysisResult) => {
+    set(() => ({
       results: results,
     }))
   },
