@@ -5,25 +5,26 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  ajv: 6.15.0
-  brace-expansion@1: 1.1.21
-  brace-expansion@2: 2.1.7
-  cookie: 0.7.2
-  cross-spawn: 7.0.6
-  flatted: 3.4.4
-  glob@10: 10.5.0
-  js-yaml: 4.3.2
-  jsondiffpatch: 0.7.6
-  micromatch: 4.0.8
-  minimatch@3: 3.1.5
-  minimatch@9: 9.0.9
-  nanoid: 3.3.20
-  path-to-regexp@6: 6.3.0
-  picomatch: 2.3.2
-  postcss: 8.5.31
-  postcss-selector-parser: 7.1.7
-  source-map-js: 1.2.2
-  yaml: 2.8.3
+  ajv@6: ^6.14.0
+  brace-expansion@1: ^1.1.21
+  brace-expansion@2: ^2.1.7
+  '@vercel/microfrontends>cookie': ^0.7.2
+  cross-spawn: ^7.0.5
+  flatted: ^3.4.2
+  glob@10: ^10.5.0
+  js-yaml: ^4.3.2
+  ai>jsondiffpatch: ^0.7.6
+  micromatch: ^4.0.8
+  minimatch@3: ^3.1.5
+  minimatch@9: ^9.0.9
+  nanoid@3: ^3.3.16
+  path-to-regexp@6: ^6.3.0
+  picomatch@2: ^2.3.2
+  postcss: ^8.5.31
+  postcss-selector-parser@6: ^6.1.3
+  postcss-selector-parser@7: ^7.1.6
+  source-map-js: ^1.2.2
+  yaml: ^2.8.3
 
 importers:
 
@@ -109,7 +110,7 @@ importers:
         specifier: 15.5.28
         version: 15.5.28(eslint@9.39.5(jiti@1.21.7))(typescript@5.9.3)
       postcss:
-        specifier: 8.5.31
+        specifier: ^8.5.31
         version: 8.5.31
       prettier-plugin-tailwindcss:
         specifier: ^0.6.5
@@ -1310,6 +1311,9 @@ packages:
   ajv@6.15.0:
     resolution: {integrity: sha512-fgFx7Hfoq60ytK2c7DhnF8jIvzYgOMxfugjLOSMHjLIPgenqa7S7oaagATUq99mV6IYvN2tRmC0wnTYX6iPbMw==}
 
+  ajv@8.20.0:
+    resolution: {integrity: sha512-Thbli+OlOj+iMPYFBVBfJ3OmCAnaSyNn4M1vz9T6Gka5Jt9ba/HIR56joy65tY6kx/FCF5VXNB819Y7/GUrBGA==}
+
   ansi-regex@5.0.1:
     resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}
     engines: {node: '>=8'}
@@ -1831,6 +1835,9 @@ packages:
   fast-levenshtein@2.0.6:
     resolution: {integrity: sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==}
 
+  fast-uri@3.1.9:
+    resolution: {integrity: sha512-hS/0Wt3Ya043oKXs0sIxrMpKQITXhMLIrVAKKXi4gozGC9v7YRWVnXIZzjNPTO02M9BdxLCWqK1yRXgNziVyJQ==}
+
   fastq@1.20.3:
     resolution: {integrity: sha512-XKv5nnLs6nLF71NgiKJLIZFLkPyIEuOselLG7ujZnGrRfQK8HpvY+WqKhAJUAdLomwVHErVS4LfxFlPq0/FTAw==}
 
@@ -1838,7 +1845,7 @@ packages:
     resolution: {integrity: sha512-tIbYtZbucOs0BRGqPJkshJUYdL+SDH7dVM8gjy+ERp3WAUjLEFJE+02kanyHtwjWOnwrKYBiwAmM0p4kLJAnXg==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
-      picomatch: 2.3.2
+      picomatch: ^3 || ^4
     peerDependenciesMeta:
       picomatch:
         optional: true
@@ -2200,6 +2207,9 @@ packages:
   json-schema-traverse@0.4.1:
     resolution: {integrity: sha512-xbbCH5dCYU5T8LcEhhuh7HJ88HXuW3qsI3Y0zOZFKfZEHcpWiHU/Jxzk629Brsab/mMiHQti9wMP+845RPe3Vg==}
 
+  json-schema-traverse@1.0.0:
+    resolution: {integrity: sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug==}
+
   json-schema@0.4.0:
     resolution: {integrity: sha512-es94M3nTIfsEPisRafak+HDLfHXnKBhV3vU5eqPcS3flIWqcxJWgXHXiey3YrpaNsanY5ei1VoYEbOzijuq9BA==}
 
@@ -2490,6 +2500,10 @@ packages:
     resolution: {integrity: sha512-V7+vQEJ06Z+c5tSye8S+nHUfI51xoXIXjHQ99cQtKUkQqqO1kO/KCJUfZXuB47h/YBlDhah2H3hdUGXn8ie0oA==}
     engines: {node: '>=8.6'}
 
+  picomatch@4.0.7:
+    resolution: {integrity: sha512-qcJu88Q2IWqJsDD529JKMdwGm/dvInW4HvQnRwiH9JtihJvzGOscDtHE3x1pBKeUOTysQ8kVmLnJ2kJu7yhcGA==}
+    engines: {node: '>=12'}
+
   pirates@4.0.7:
     resolution: {integrity: sha512-TfySrs/5nm8fQJDcBDuUng3VOUKsd7S+zqvbOTiGXHfxX4wK31ard+hoNuvkicM/2YFzlpDgABOevKSsB4G/FA==}
     engines: {node: '>= 6'}
@@ -2502,22 +2516,22 @@ packages:
     resolution: {integrity: sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
-      postcss: 8.5.31
+      postcss: ^8.5.31
 
   postcss-js@4.1.0:
     resolution: {integrity: sha512-oIAOTqgIo7q2EOwbhb8UalYePMvYoIeRY2YKntdpFQXNosSu3vLrniGgmH9OKs/qAkfoj5oB3le/7mINW1LCfw==}
     engines: {node: ^12 || ^14 || >= 16}
     peerDependencies:
-      postcss: 8.5.31
+      postcss: ^8.5.31
 
   postcss-load-config@6.0.1:
     resolution: {integrity: sha512-oPtTM4oerL+UXmx+93ytZVN82RrlY/wPUV8IeDxFrzIjXOLF1pN+EmKPLbubvKHT2HC20xXsCAH2Z+CKV6Oz/g==}
     engines: {node: '>= 18'}
     peerDependencies:
       jiti: '>=1.21.0'
-      postcss: 8.5.31
+      postcss: ^8.5.31
       tsx: ^4.8.1
-      yaml: 2.8.3
+      yaml: ^2.8.3
     peerDependenciesMeta:
       jiti:
         optional: true
@@ -2532,10 +2546,10 @@ packages:
     resolution: {integrity: sha512-HQbt28KulC5AJzG+cZtj9kvKB93CFCdLvog1WFLf1D+xmMvPGlBstkpTEZfK5+AN9hfJocyBFCNiqyS48bpgzQ==}
     engines: {node: '>=12.0'}
     peerDependencies:
-      postcss: 8.5.31
+      postcss: ^8.5.31
 
-  postcss-selector-parser@7.1.7:
-    resolution: {integrity: sha512-wWBro/7hJ40ye6TPiXkUQoXKCw23xSsjriUvqd7Uls9Sso3oLiON1flc18cCdnjgCRXw4fBVqUJJeOdDTh3P3g==}
+  postcss-selector-parser@6.1.5:
+    resolution: {integrity: sha512-TEHFzb5KRDKaOgJ4TYE+0jyJtFbjLvkdVOu0fZ2b6MTWzoqZd4Le+61aEppWkvTlYePgOX4ATL1wsAIPMLTw6Q==}
     engines: {node: '>=4'}
 
   postcss-value-parser@4.2.0:
@@ -2669,6 +2683,10 @@ packages:
   regexparam@1.3.0:
     resolution: {integrity: sha512-6IQpFBv6e5vz1QAqI+V4k8P2e/3gRrqfCJ9FI+O1FLQTO+Uz6RXZEZOPmTJ6hlGj7gkERzY5BRCv09whKP96/g==}
     engines: {node: '>=6'}
+
+  require-from-string@2.0.2:
+    resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
+    engines: {node: '>=0.10.0'}
 
   requires-port@1.0.0:
     resolution: {integrity: sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==}
@@ -4069,7 +4087,7 @@ snapshots:
   '@vercel/microfrontends@1.3.0(@vercel/analytics@1.6.1(next@15.5.28(@opentelemetry/api@1.9.0)(@types/node@22.20.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react@19.3.1)(svelte@5.57.2(@typescript-eslint/types@8.72.0))(vue@3.5.44(typescript@5.9.3)))(next@15.5.28(@opentelemetry/api@1.9.0)(@types/node@22.20.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)':
     dependencies:
       '@next/env': 15.1.6
-      ajv: 6.15.0
+      ajv: 8.20.0
       commander: 12.1.0
       cookie: 0.7.2
       fast-glob: 3.3.3
@@ -4221,6 +4239,13 @@ snapshots:
       fast-json-stable-stringify: 2.1.0
       json-schema-traverse: 0.4.1
       uri-js: 4.4.1
+
+  ajv@8.20.0:
+    dependencies:
+      fast-deep-equal: 3.1.3
+      fast-uri: 3.1.9
+      json-schema-traverse: 1.0.0
+      require-from-string: 2.0.2
 
   ansi-regex@5.0.1: {}
 
@@ -4895,13 +4920,15 @@ snapshots:
 
   fast-levenshtein@2.0.6: {}
 
+  fast-uri@3.1.9: {}
+
   fastq@1.20.3:
     dependencies:
       reusify: 1.1.0
 
-  fdir@6.5.0(picomatch@2.3.2):
+  fdir@6.5.0(picomatch@4.0.7):
     optionalDependencies:
-      picomatch: 2.3.2
+      picomatch: 4.0.7
 
   file-entry-cache@8.0.0:
     dependencies:
@@ -5288,6 +5315,8 @@ snapshots:
 
   json-schema-traverse@0.4.1: {}
 
+  json-schema-traverse@1.0.0: {}
+
   json-schema@0.4.0: {}
 
   json-stable-stringify-without-jsonify@1.0.1: {}
@@ -5568,6 +5597,8 @@ snapshots:
 
   picomatch@2.3.2: {}
 
+  picomatch@4.0.7: {}
+
   pirates@4.0.7: {}
 
   possible-typed-array-names@1.1.0: {}
@@ -5594,9 +5625,9 @@ snapshots:
   postcss-nested@6.2.0(postcss@8.5.31):
     dependencies:
       postcss: 8.5.31
-      postcss-selector-parser: 7.1.7
+      postcss-selector-parser: 6.1.5
 
-  postcss-selector-parser@7.1.7:
+  postcss-selector-parser@6.1.5:
     dependencies:
       cssesc: 3.0.0
       util-deprecate: 1.0.2
@@ -5675,6 +5706,8 @@ snapshots:
       set-function-name: 2.0.2
 
   regexparam@1.3.0: {}
+
+  require-from-string@2.0.2: {}
 
   requires-port@1.0.0: {}
 
@@ -5986,7 +6019,7 @@ snapshots:
       postcss-js: 4.1.0(postcss@8.5.31)
       postcss-load-config: 6.0.1(jiti@1.21.7)(postcss@8.5.31)
       postcss-nested: 6.2.0(postcss@8.5.31)
-      postcss-selector-parser: 7.1.7
+      postcss-selector-parser: 6.1.5
       resolve: 1.22.13
       sucrase: 3.35.1
     transitivePeerDependencies:
@@ -6005,8 +6038,8 @@ snapshots:
 
   tinyglobby@0.2.17:
     dependencies:
-      fdir: 6.5.0(picomatch@2.3.2)
-      picomatch: 2.3.2
+      fdir: 6.5.0(picomatch@4.0.7)
+      picomatch: 4.0.7
 
   to-regex-range@5.0.1:
     dependencies:
