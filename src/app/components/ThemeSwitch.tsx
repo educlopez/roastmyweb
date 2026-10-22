@@ -8,7 +8,7 @@ export const ThemeSwitch = () => {
   const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()
 
-  let otherTheme = theme === "dark" ? "light" : "dark"
+  const otherTheme = theme === "dark" ? "light" : "dark"
 
   useEffect(() => {
     setMounted(true)
