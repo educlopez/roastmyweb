@@ -72,7 +72,7 @@ export default function RootLayout({
   const shouldInjectToolbar = process.env.NODE_ENV === "development"
 
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
         className={`bg-light1 antialiased transition dark:bg-dark1 ${inter.className} `}
       >

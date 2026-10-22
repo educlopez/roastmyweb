@@ -25,8 +25,16 @@ async function handleRequest(url: string, ip: string) {
   return NextResponse.json({ seoData, cruxData, suggestions })
 }
 
+function getClientIp(request: NextRequest): string {
+  const forwarded = request.headers.get("x-forwarded-for")
+  if (forwarded) {
+    return forwarded.split(",")[0]!.trim()
+  }
+  return request.headers.get("x-real-ip") ?? "unknown"
+}
+
 export async function GET(request: NextRequest) {
-  const ip = request.ip || "unknown"
+  const ip = getClientIp(request)
   const url = request.nextUrl.searchParams.get("url")
 
   if (!url) {
@@ -45,7 +53,7 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  const ip = request.ip || "unknown"
+  const ip = getClientIp(request)
 
   try {
     const { url } = await request.json()

@@ -2,10 +2,10 @@
 
 import { Suspense, useEffect, useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
-import { motion } from "framer-motion"
 
 import useUrlStore from "@/app/components/AppContext"
 import ResultsDisplay from "@/app/components/ResultsDisplay"
+import { AnalysisResult } from "@/app/types"
 
 import ScannerWindowAnimation from "./Scaner"
 
@@ -13,8 +13,73 @@ interface AnalyzerFormProps {
   minLoadingTime?: number
 }
 
+async function analyzeUrl(urlToAnalyze: string): Promise<AnalysisResult> {
+  const response = await fetch("/api/analyze", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ url: urlToAnalyze }),
+  })
+
+  if (!response.ok) throw new Error("Analysis failed")
+  return response.json()
+}
+
+function UrlParamAnalysis({
+  url,
+  minLoadingTime,
+}: {
+  url: string
+  minLoadingTime: number
+}) {
+  const [isLoading, setIsLoading] = useState(true)
+  const [showResults, setShowResults] = useState(false)
+  const results = useUrlStore((state) => state.results)
+  const setResults = useUrlStore((state) => state.setResults)
+  const updateStoreUrl = useUrlStore((state) => state.updateUrl)
+  const router = useRouter()
+
+  useEffect(() => {
+    let cancelled = false
+    const startTime = Date.now()
+
+    ;(async () => {
+      try {
+        const data = await analyzeUrl(url)
+        if (cancelled) return
+        setResults(data)
+        updateStoreUrl(url)
+        router.push(`?url=${url}`, undefined)
+
+        const remainingTime = Math.max(0, minLoadingTime - (Date.now() - startTime))
+        await new Promise((resolve) => setTimeout(resolve, remainingTime))
+      } catch (error) {
+        console.error("Error:", error)
+      } finally {
+        if (!cancelled) {
+          setIsLoading(false)
+          setShowResults(true)
+        }
+      }
+    })()
+
+    return () => {
+      cancelled = true
+    }
+  }, [url, minLoadingTime, router, setResults, updateStoreUrl])
+
+  return (
+    <>
+      {isLoading && <ScannerWindowAnimation />}
+      {showResults && results && <ResultsDisplay results={results} />}
+    </>
+  )
+}
+
 export function AnalyzerForm({ minLoadingTime = 3000 }: AnalyzerFormProps) {
-  const [url, setUrl] = useState("")
+  const searchParams = useSearchParams()
+  const urlParam = searchParams.get("url")
+  const [typedUrl, setTypedUrl] = useState<string | null>(null)
+  const url = typedUrl ?? urlParam ?? ""
   const [isLoading, setIsLoading] = useState(false)
   const [showResults, setShowResults] = useState(false)
   const currentUrl = useUrlStore((state) => state.currentUrl)
@@ -23,40 +88,26 @@ export function AnalyzerForm({ minLoadingTime = 3000 }: AnalyzerFormProps) {
   const setResults = useUrlStore((state) => state.setResults)
   const clearState = useUrlStore((state) => state.clearState)
   const router = useRouter()
-  const searchParams = useSearchParams()
 
   useEffect(() => {
-    const urlParam = searchParams.get("url")
-    if (urlParam) {
-      setUrl(urlParam)
-      handleAnalysis(urlParam)
-    } else {
+    if (!urlParam) {
       clearState()
     }
-  }, [searchParams])
+  }, [urlParam, clearState])
 
-  const handleAnalysis = async (urlToAnalyze: string) => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
     setIsLoading(true)
     setShowResults(false)
     const startTime = Date.now()
 
     try {
-      const response = await fetch("/api/analyze", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url: urlToAnalyze }),
-      })
-
-      if (!response.ok) throw new Error("Analysis failed")
-
-      const data = await response.json()
+      const data = await analyzeUrl(url)
       setResults(data)
-      updateStoreUrl(urlToAnalyze)
-      router.push(`?url=${urlToAnalyze}`, undefined)
+      updateStoreUrl(url)
+      router.push(`?url=${url}`, undefined)
 
-      const elapsedTime = Date.now() - startTime
-      const remainingTime = Math.max(0, minLoadingTime - elapsedTime)
-
+      const remainingTime = Math.max(0, minLoadingTime - (Date.now() - startTime))
       await new Promise((resolve) => setTimeout(resolve, remainingTime))
     } catch (error) {
       console.error("Error:", error)
@@ -64,11 +115,6 @@ export function AnalyzerForm({ minLoadingTime = 3000 }: AnalyzerFormProps) {
       setIsLoading(false)
       setShowResults(true)
     }
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    handleAnalysis(url)
   }
 
   return (
@@ -82,7 +128,7 @@ export function AnalyzerForm({ minLoadingTime = 3000 }: AnalyzerFormProps) {
             <input
               type="url"
               value={url}
-              onChange={(e) => setUrl(e.target.value)}
+              onChange={(e) => setTypedUrl(e.target.value)}
               placeholder="Enter website URL"
               className="h-[36px] w-full flex-1 rounded-lg bg-light3 px-2 font-sans text-sm outline-none outline-transparent transition-colors ease-out focus:outline-none focus:ring-1 focus:ring-[#cacaca] active:bg-light2 dark:bg-dark3 dark:shadow-none dark:focus:ring-white/10"
               required
@@ -99,8 +145,18 @@ export function AnalyzerForm({ minLoadingTime = 3000 }: AnalyzerFormProps) {
           </fieldset>
         </form>
       )}
-      {isLoading && <ScannerWindowAnimation />}
-      {showResults && results && <ResultsDisplay results={results} />}
+      {urlParam ? (
+        <UrlParamAnalysis
+          key={urlParam}
+          url={urlParam}
+          minLoadingTime={minLoadingTime}
+        />
+      ) : (
+        <>
+          {isLoading && <ScannerWindowAnimation />}
+          {showResults && results && <ResultsDisplay results={results} />}
+        </>
+      )}
     </div>
   )
 }

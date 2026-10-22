@@ -1,18 +1,18 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useSyncExternalStore } from "react"
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 
 export const ThemeSwitch = () => {
-  const [mounted, setMounted] = useState(false)
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  )
   const { theme, setTheme } = useTheme()
 
-  let otherTheme = theme === "dark" ? "light" : "dark"
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
+  const otherTheme = theme === "dark" ? "light" : "dark"
 
   if (!mounted) {
     return null
